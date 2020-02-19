@@ -1,0 +1,119 @@
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+  color: #4c4c4c;
+  height: 100vh;
+  margin: auto;
+  background: #360033;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #0b8793, #360033) no-repeat;
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #0b8793, #360033) no-repeat;
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.App {
+  width: 100%;
+  max-width: 960px;
+  margin: 2.5em auto;
+  border-radius: .35em;
+  background: #fcfcfc;
+  overflow: hidden;
+  align-items: center;
+  -webkit-box-shadow: 10px 10px 26px rgba(0, 0, 0, .13);
+  box-shadow: 0 0 26px rgba(0, 0, 0, .13);
+}
+
+/* .jumbotron{
+  text-align: center;
+  color:white;
+  background:url(./images/header-bg.jpg) no-repeat;
+  background-size: cover;
+} */
+
+.set-button {
+  display: flex;
+  margin-top: 15px;
+}
+
+
+h1 {
+  text-shadow: 5px 3px 15px rgba(0, 0, 0, .8);
+  line-height: .65;
+  margin-top: .5em;
+  font-weight: bold;
+
+}
+
+p {
+  font-size: 0.7em;
+  text-shadow: 3px 3px 3px rgba(0, 0, 0, .8);
+}
+
+.nav-tabs {
+  margin-bottom: 15px;
+}
+
+.main-button {
+  display: flex;
+  margin-top: 50px;
+}
+
+/* Canvas */
+#main-canvas {
+  background: #ccc;
+  background: url('./images/bg-canvas.png');
+  background-repeat: repeat;
+  border: 1px solid #ececec;
+  margin: 10px auto;
+  display: block;
+  width: 100% !important;
+
+}
+
+.main-canvas-container {
+  margin: auto;
+}
+
+.main-canvas-container .canvas-container {
+  width: 100% !important;
+}
+
+.main {
+  margin: auto;
+  padding: 1em 2em 2em 2em;
+}
+
+@media (min-width: 769px) {
+  .jumbotron {
+    height: 200px;
+  }
+
+}
+
+input[type="color"] {
+  border: 3px solid #000;
+  display: none;
+}
+
+input[type="text"] {
+  text-align: center;
+  -moz-appearance: textfield !important;
+  -webkit-appearance: textfield;
+  border-radius: 50%;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
