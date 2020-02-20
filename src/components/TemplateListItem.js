@@ -12,8 +12,8 @@ export default class TemplateListItem extends React.Component {
   };
   render() {
     return (
-      <Col xs={6} md={4} style={{ marginBottom: "10px" }}>
-        <a href="#" className="thumbnail" onClick={this.localAddToCanvas}>
+      <Col xs={6} md={4} className="col-6" style={{ marginBottom: "10px" }}>
+        <a href="" className="thumbnail" onClick={this.localAddToCanvas}>
           <img
             alt=""
             src={this.props.url}

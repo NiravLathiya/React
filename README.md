@@ -1,4 +1,4 @@
-# Avatar Maker
+# Image Maker
 This project was created using ReactJS and FabriJS
 
 ## Installation:

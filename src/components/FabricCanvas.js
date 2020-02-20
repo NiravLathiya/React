@@ -14,7 +14,6 @@ class FabricCanvas extends React.Component {
     this.the_canvas.setWidth(410);
   }
   componentWillReceiveProps = newprops => {
-
     // If Updated Item is not the same as the old one
     // 		=> Update the canvas with newer item
     if (newprops.activeProperty !== this.props.activeProperty) {
@@ -66,59 +65,97 @@ class FabricCanvas extends React.Component {
     this.setState({ text: true });
   };
   bold = () => {
-    if (this.the_canvas.getActiveObject().get("fontWeight") === "normal") {
+    if (
+      this.the_canvas.getActiveObject() &&
+      this.the_canvas.getActiveObject().get("fontWeight") === "normal"
+    ) {
       this.the_canvas.getActiveObject().set("fontWeight", "bold");
     } else {
-      this.the_canvas.getActiveObject().set("fontWeight", "normal");
+      if (
+        this.the_canvas.getActiveObject() &&
+        this.the_canvas.getActiveObject().get("fontWeight") === "bold"
+      ) {
+        console.log(
+          "hello",
+          this.the_canvas.getActiveObject().get("fontWeight")
+        );
+        this.the_canvas.getActiveObject().set("fontWeight", "normal");
+      }
     }
     this.the_canvas.renderAll();
   };
   italic = () => {
-    if (this.the_canvas.getActiveObject().get("fontStyle") === "") {
+    if (
+      this.the_canvas.getActiveObject() &&
+      this.the_canvas.getActiveObject().get("fontStyle") === ""
+    ) {
+      console.log("hello");
       this.the_canvas.getActiveObject().set("fontStyle", "italic");
     } else {
-      this.the_canvas.getActiveObject().set("fontStyle", "");
+      if (
+        this.the_canvas.getActiveObject() &&
+        this.the_canvas.getActiveObject().get("fontStyle") === "italic"
+      ) {
+        console.log(
+          "hello",
+          this.the_canvas.getActiveObject().get("fontStyle")
+        );
+
+        this.the_canvas.getActiveObject().set("fontStyle", "");
+      }
     }
+
     this.the_canvas.renderAll();
   };
   undeline = () => {
-    if (this.the_canvas.getActiveObject().get("textDecoration") === "") {
+    if (
+      this.the_canvas.getActiveObject() &&
+      this.the_canvas.getActiveObject().get("textDecoration") === ""
+    ) {
       this.the_canvas.getActiveObject().set("textDecoration", "underline");
     } else {
-      this.the_canvas.getActiveObject().set("textDecoration", "");
+      if (
+        this.the_canvas.getActiveObject() &&
+        this.the_canvas.getActiveObject().get("textDecoration") === "underline"
+      ) {
+        this.the_canvas.getActiveObject().set("textDecoration", "");
+      }
     }
     this.the_canvas.renderAll();
   };
 
   render() {
     return (
-      <div className="main-canvas-container">
-        <canvas id="main-canvas"></canvas>
-        <div className="main-button">
-          <Button
-            bsStyle="success"
-            onClick={this.saveToCanvas}
-            bsSize="large"
-            style={{ width: "100%", marginRight: "10px" }}
-          >
-            Download Avatar
-          </Button>
-          <Button
-            bsStyle="success"
-            onClick={this.Addtext}
-            bsSize="large"
-            style={{ width: "100%" }}
-          >
-            Add Text
-          </Button>
+      <div>
+        <div className="main-canvas-container">
+          <canvas id="main-canvas"></canvas>
+          <div className="main-button">
+            <Button
+              bsStyle="success"
+              onClick={this.saveToCanvas}
+              bsSize="large"
+              style={{ width: "100%", marginRight: "10px" }}
+            >
+              Download Image
+            </Button>
+            <Button
+              bsStyle="success"
+              onClick={this.Addtext}
+              bsSize="large"
+              style={{ width: "100%" }}
+            >
+              Add Text
+            </Button>
+          </div>
         </div>
         {this.state.text && (
           <div className="set-button">
             <div style={{ margin: "auto", marginTop: "10px" }}>
-              <label for="text-bg-color">
+              <label htmlFor="text-bg-color">
                 <img
                   src="https://iconsplace.com/wp-content/uploads/_icons/ffa500/256/png/background-color-icon-11-256.png"
                   style={{ width: "45px" }}
+                  alt="background-color"
                 />
               </label>
               &nbsp;
@@ -128,21 +165,23 @@ class FabricCanvas extends React.Component {
                 id="text-bg-color"
                 size="10"
                 onChange={e => {
-                  this.the_canvas
-                    .getActiveObject()
-                    .setBackgroundColor(e.target.value);
+                  if (this.the_canvas.getActiveObject()) {
+                    this.the_canvas
+                      .getActiveObject()
+                      .setBackgroundColor(e.target.value);
+                  }
+
                   this.the_canvas.renderAll();
                 }}
               />
             </div>
             <Button
-              bsStyle=""
               onClick={this.bold}
               bsSize="large"
               style={{
-                margin: "auto",
                 height: "45px",
                 width: "50px",
+                margin: '10px auto',
                 borderRadius: "50%",
                 backgroundColor: "#116d80",
                 color: "#fff",
@@ -152,13 +191,12 @@ class FabricCanvas extends React.Component {
               <strong>B</strong>
             </Button>
             <Button
-              bsStyle=""
               onClick={this.italic}
               bsSize="large"
               style={{
-                margin: "auto",
                 height: "45px",
                 width: "50px",
+                margin: '10px auto',
                 borderRadius: "50%",
                 backgroundColor: "#116d80",
                 color: "#fff",
@@ -168,13 +206,12 @@ class FabricCanvas extends React.Component {
               <em>i</em>
             </Button>
             <Button
-              bsStyle=""
               onClick={this.undeline}
               bsSize="large"
               style={{
-                margin: "auto",
                 height: "45px",
                 width: "50px",
+                margin: '10px auto',
                 borderRadius: "50%",
                 backgroundColor: "#116d80",
                 color: "#fff",
@@ -197,10 +234,36 @@ class FabricCanvas extends React.Component {
               size="10"
               min="0"
               onChange={e => {
-                this.the_canvas.getActiveObject().setFontSize(e.target.value);
+                if (this.the_canvas.getActiveObject()) {
+                  this.the_canvas.getActiveObject().setFontSize(e.target.value);
+                }
                 this.the_canvas.renderAll();
               }}
             />
+            <div style={{ margin: "auto", marginTop: "10px" }}>
+              <label htmlFor="text-color">
+                <img
+                  src="https://iconsplace.com/wp-content/uploads/_icons/000080/256/png/border-color-icon-9-256.png"
+                  style={{ width: "45px" }}
+                  alt="Text-color"
+                />
+              </label>
+              &nbsp;
+              <input
+                type="color"
+                defaultValue=""
+                id="text-color"
+                size="10"
+                onChange={e => {
+                  if (this.the_canvas.getActiveObject()) {
+                    this.the_canvas.getActiveObject().setFill(e.target.value);
+                  } else {
+                    console.log('hellosasasas')
+                  }
+                  this.the_canvas.renderAll();
+                }}
+              />
+            </div>
           </div>
         )}
       </div>

@@ -15,6 +15,10 @@ export default class TemplateList extends React.Component {
       />
     ));
 
-    return <div className="row" style={{height:'500px', overflowY:'auto'}}>{templates}</div>;
+    return (
+      <div className="row" style={{ }}>
+        {templates}
+      </div>
+    );
   }
 }

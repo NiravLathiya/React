@@ -1,6 +1,5 @@
 {
-  "name": "avatar",
-  "homepage": "https://alizohaib.github.io/avatar-maker",
+  "name": "Editor",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
